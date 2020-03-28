@@ -27,6 +27,8 @@ do
 	wage=$(($hours * $wagePerHour))
 	workingHours=$(($workingHours+$hours))
 	((workingDays++))
+	wages[workingDays]=$wage
 	monthsWage=$(($wage+$monthsWage)) 
 done
 echo $monthsWage
+echo ${wages[@]}
