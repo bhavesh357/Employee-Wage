@@ -15,7 +15,7 @@ function getWorkingHours() {
 
 
 echo "Welcome to employee wage computation program"
-
+declare -A wages
 wagePerHour=20
 monthsWage=0
 workingDays=0
@@ -27,8 +27,9 @@ do
 	wage=$(($hours * $wagePerHour))
 	workingHours=$(($workingHours+$hours))
 	((workingDays++))
-	wages[workingDays]=$wage
+	wages[$workingDays]=$wage
 	monthsWage=$(($wage+$monthsWage)) 
 done
 echo $monthsWage
+echo ${!wages[@]}
 echo ${wages[@]}
