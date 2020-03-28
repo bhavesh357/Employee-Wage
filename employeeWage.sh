@@ -5,10 +5,12 @@ echo "Welcome to employee wage computation program"
 wagePerHour=20
 fullTime=8
 partTime=4
-isPresent=$(($RANDOM%3))
-wage=0
-
-case $isPresent in 
+monthsWage=0
+for ((i=0;i<20;i++))
+do
+	isPresent=$(($RANDOM%3))
+	wage=0
+	case $isPresent in 
 	0)
 		wage=$((0 * $wagePerHour))
 		;;
@@ -18,5 +20,6 @@ case $isPresent in
 	2)
 		wage=$(($fullTime * $wagePerHour))
 		;;	
-esac
-echo $wage
+	esac
+	monthsWage=$(($wage+$monthsWage)) 
+done
