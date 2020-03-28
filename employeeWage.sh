@@ -6,7 +6,9 @@ wagePerHour=20
 fullTime=8
 partTime=4
 monthsWage=0
-for ((i=0;i<20;i++))
+workingDays=0
+workingHours=0
+while [[ $workingDays -lt 20 && $workingHours -lt 100 ]]
 do
 	isPresent=$(($RANDOM%3))
 	wage=0
@@ -16,10 +18,14 @@ do
 		;;
 	1)
 		wage=$(($partTime * $wagePerHour))
+		workingHours=$(($workingHours+$partTime))
 		;;
 	2)
 		wage=$(($fullTime * $wagePerHour))
+		workingHours=$(($workingHours+$fullTime))
 		;;	
 	esac
+	((workingDays++))
 	monthsWage=$(($wage+$monthsWage)) 
 done
+echo $monthsWage
