@@ -19,3 +19,4 @@ case $isPresent in
 		wage=$(($fullTime * $wagePerHour))
 		;;	
 esac
+echo $wage
