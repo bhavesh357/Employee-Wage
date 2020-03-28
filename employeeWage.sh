@@ -1,27 +1,32 @@
 #!/bin/bash -x
+#CONSTANTS
+declare -r wagePerHour=20
+declare -A wages
+declare isFullTime=2
+declare isPartTime=1
+#VARIABLES
+monthsWage=0
+workingDays=0
+workingHours=0
 function getWorkingHours() {
 	case $1 in 
-	0)
-		echo 0
-			;;
-	1)
+	isPartTime)
 		echo 4
 			;;
-	2)
+	isFullTime)
 		echo 8
+			;;
+	*)
+		echo 0
 			;;	
 	esac	
 }
 
 function calculateWages() {
-	declare -r wagePerHour=20
 	echo $(( $1 * $wagePerHour))
 }
+
 echo "Welcome to employee wage computation program"
-declare -A wages
-monthsWage=0
-workingDays=0
-workingHours=0
 while [[ $workingDays -lt 20 && $workingHours -lt 100 ]]
 do
 	isPresent=$(($RANDOM%3))
