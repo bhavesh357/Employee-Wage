@@ -4,19 +4,17 @@ echo "Welcome to employee wage computation program"
 
 wagePerHour=20
 fullTime=8
-partTime=4
-isPresent=$(($RANDOM%3))
-wage=0
 
-case $isPresent in 
-	0)
-		wage=$((0 * $wagePerHour))
-		;;
-	1)
-		wage=$(($partTime * $wagePerHour))
-		;;
-	2)
-		wage=$(($fullTime * $wagePerHour))
-		;;	
-esac
-echo $wage
+isPresent=$(($RANDOM%3))
+
+if [ $isPresent -eq 2 ]
+then
+	echo $(($fullTime * $wagePerHour))
+else
+	if [ isPresent -eq 1 ]
+	then
+		echo $(( $partTime * $wagePerHour))
+	else
+		echo $(( 0 * $wagePerHour ))
+	fi
+fi
