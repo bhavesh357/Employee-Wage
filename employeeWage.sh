@@ -1,30 +1,31 @@
 #!/bin/bash -x
+function getWorkingHours() {
+	case $1 in 
+	0)
+		echo 0
+			;;
+	1)
+		echo 4
+			;;
+	2)
+		echo 8
+			;;	
+	esac	
+}
+
 
 echo "Welcome to employee wage computation program"
 
 wagePerHour=20
-fullTime=8
-partTime=4
 monthsWage=0
 workingDays=0
 workingHours=0
 while [[ $workingDays -lt 20 && $workingHours -lt 100 ]]
 do
 	isPresent=$(($RANDOM%3))
-	wage=0
-	case $isPresent in 
-	0)
-		wage=$((0 * $wagePerHour))
-		;;
-	1)
-		wage=$(($partTime * $wagePerHour))
-		workingHours=$(($workingHours+$partTime))
-		;;
-	2)
-		wage=$(($fullTime * $wagePerHour))
-		workingHours=$(($workingHours+$fullTime))
-		;;	
-	esac
+	hours=$( getWorkingHours $isPresent )
+	wage=$(($hours * $wagePerHour))
+	workingHours=$(($workingHours+$hours))
 	((workingDays++))
 	monthsWage=$(($wage+$monthsWage)) 
 done
