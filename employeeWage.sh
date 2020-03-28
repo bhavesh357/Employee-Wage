@@ -13,10 +13,12 @@ function getWorkingHours() {
 	esac	
 }
 
-
+function calculateWages() {
+	declare -r wagePerHour=20
+	echo $(( $1 * $wagePerHour))
+}
 echo "Welcome to employee wage computation program"
 declare -A wages
-wagePerHour=20
 monthsWage=0
 workingDays=0
 workingHours=0
@@ -24,11 +26,10 @@ while [[ $workingDays -lt 20 && $workingHours -lt 100 ]]
 do
 	isPresent=$(($RANDOM%3))
 	hours=$( getWorkingHours $isPresent )
-	wage=$(($hours * $wagePerHour))
 	workingHours=$(($workingHours+$hours))
 	((workingDays++))
-	wages[$workingDays]=$wage
-	monthsWage=$(($wage+$monthsWage)) 
+	wages[$workingDays]=$( calculateWages $hours)
+	monthsWage=$((${wages[$workingDays]}+$monthsWage)) 
 done
 echo $monthsWage
 echo ${!wages[@]}
