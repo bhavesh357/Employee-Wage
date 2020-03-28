@@ -11,7 +11,7 @@ if [ $isPresent -eq 2 ]
 then
 	echo $(($fullTime * $wagePerHour))
 else
-	if [ isPresent -eq 1 ]
+	if [ $isPresent -eq 1 ]
 	then
 		echo $(( $partTime * $wagePerHour))
 	else
