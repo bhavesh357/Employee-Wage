@@ -23,7 +23,8 @@ function getWorkingHours() {
 }
 
 function calculateWages() {
-	echo $(( $1 * $wagePerHour))
+	hoursWorked=$1
+	echo $(( $hoursWorked * $wagePerHour))
 }
 
 echo "Welcome to employee wage computation program"
