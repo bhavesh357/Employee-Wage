@@ -4,6 +4,8 @@ declare -r wagePerHour=20
 declare -A wages
 declare isFullTime=2
 declare isPartTime=1
+maxWorkHours=100
+maxDaysWorkable=30
 #VARIABLES
 monthsWage=0
 workingDays=0
@@ -28,7 +30,7 @@ function calculateWages() {
 }
 
 echo "Welcome to employee wage computation program"
-while [[ $workingDays -lt 20 && $workingHours -lt 100 ]]
+while [[ $workingDays -lt $maxDaysWorkable && $workingHours -lt $maxWorkHours ]]
 do
 	isPresent=$(($RANDOM%3))
 	hours=$( getWorkingHours $isPresent )
